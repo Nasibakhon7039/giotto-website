@@ -1,14 +1,13 @@
-import React, { Component } from "react";
-import Navibar from "../Components/Navibar";
-import AboutUs from "../Layout/AboutUs";
+import React from 'react'
+import Navibar from '../Components/Navibar'
+import AboutUs from '../Layout/AboutUs'
+import Layout from '../Layout/Layout'
 
-export default class About extends Component {
-  render() {
-    return (
-      <>
-        <Navibar />
-        <AboutUs />
-      </>
-    );
-  }
+export default function About() {
+  return (
+    <Layout>
+      <Navibar />
+      <AboutUs />
+    </Layout>
+  )
 }

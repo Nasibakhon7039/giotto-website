@@ -1,14 +1,13 @@
-import React, { Component } from "react";
-import Navibar from "../Components/Navibar";
-import ContactPage from "../Layout/ContactPage";
+import React from 'react'
+import Navibar from '../Components/Navibar'
+import ContactPage from '../Layout/ContactPage'
+import Layout from '../Layout/Layout'
 
-export default class Contacts extends Component {
-  render() {
-    return (
-      <>
-        <Navibar />
-        <ContactPage />
-      </>
-    );
-  }
+export default function Contacts() {
+  return (
+    <Layout>
+      <Navibar />
+      <ContactPage />
+    </Layout>
+  )
 }

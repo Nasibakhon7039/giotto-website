@@ -4,9 +4,9 @@ import {
   FeatureButton,
   OrderNow,
   Step,
-  IceCream,
-  CartPlus,
-  Payment,
+  // IceCream,
+  // CartPlus,
+  // Payment,
 } from "./FeatureElements";
 
 const Feature = () => {

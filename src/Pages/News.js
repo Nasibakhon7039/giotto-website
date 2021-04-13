@@ -1,14 +1,13 @@
-import React, { Component } from "react";
-import Navibar from "../Components/Navibar";
-import Newss from "../Layout/News";
+import React from 'react'
+import Navibar from '../Components/Navibar'
+import Layout from '../Layout/Layout'
+import Newss from '../Layout/News'
 
-export default class News extends Component {
-  render() {
-    return (
-      <>
-        <Navibar />
-        <Newss />
-      </>
-    );
-  }
+export default function News() {
+  return (
+    <Layout>
+      <Navibar />
+      <Newss />
+    </Layout>
+  )
 }

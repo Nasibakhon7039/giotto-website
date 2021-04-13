@@ -55,7 +55,7 @@ const ContactPage = () => {
             <p>г. Ташкент, Яккасарайский район, улица Махмуда Тараби, 29</p>
           </Col>
           <Col md={8}>
-            <img src={location} width="640px" height="350px" />
+            <img src={location} width="640px" height="350px" alt='location' />
           </Col>
         </Row>
       </ContactPageContainer>

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Navbar, Container, Nav, Form, Modal, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import logo from "../../Images/logo.png";
+import React, { useState } from 'react'
+import { Navbar, Container, Nav, Form, Modal, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import logo from '../../Images/logo.png'
 import {
   HeroContainer,
   User,
@@ -12,47 +12,47 @@ import {
   HeroItems,
   HeroBtn,
   HeroH1,
-} from "./HeroElements";
+} from './HeroElements'
 
 const Hero = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const handleChange = () => true;
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+  const handleChange = () => true
 
   return (
     <>
       <HeroContainer>
         <Styles>
-          <Navbar collapseOnSelect expand="lg" className="nav-back">
+          <Navbar collapseOnSelect expand='lg' className='nav-back'>
             <Container>
-              <Navbar.Brand href="/">
+              <Navbar.Brand href='/'>
                 <img
                   src={logo}
-                  height="90"
-                  width="170"
-                  className="d-inline-block align-top"
-                  alt="Logo"
+                  height='90'
+                  width='170'
+                  className='d-inline-block align-top'
+                  alt='Logo'
                 />
               </Navbar.Brand>
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-              <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="mr-auto">
+              <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+              <Navbar.Collapse id='responsive-navbar-nav'>
+                <Nav className='mr-auto'>
                   <Nav.Link>
-                    <Link to="/">Главная</Link>
+                    <Link to='/'>Главная</Link>
                   </Nav.Link>
                   <Nav.Link>
-                    <Link to="/menu">Меню</Link>
+                    <Link to='/menu'>Меню</Link>
                   </Nav.Link>
                   <Nav.Link>
-                    <Link to="/about">О нас</Link>
+                    <Link to='/about'>О нас</Link>
                   </Nav.Link>
                   <Nav.Link>
-                    <Link to="/news">Новости</Link>
+                    <Link to='/news'>Новости</Link>
                   </Nav.Link>
                   <Nav.Link>
-                    <Link to="/contacts">Контакты</Link>
+                    <Link to='/contacts'>Контакты</Link>
                   </Nav.Link>
                 </Nav>
                 <NavIcon onClick={handleShow}>
@@ -69,26 +69,26 @@ const Hero = () => {
           <Modal.Header closeButton>
             <Modal.Title>Добро пожаловать</Modal.Title>
           </Modal.Header>
-          <Modal.Body className="mr-5 ml-5">
-            <Form style={{ textAlign: "center" }}>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label for="phone" className="m-4">
+          <Modal.Body className='mr-5 ml-5'>
+            <Form style={{ textAlign: 'center' }}>
+              <Form.Group controlId='formBasicEmail'>
+                <Form.Label for='phone' className='m-4'>
                   Войдите с вашим номером телефона
                 </Form.Label>
                 <Form.Control
-                  type="tel"
-                  id="phone"
-                  name="phone"
+                  type='tel'
+                  id='phone'
+                  name='phone'
                   required
-                  value="+998"
+                  value='+998'
                   onChange={handleChange}
                 />
-                <Button className="mb-3 mt-4" type="submit">
+                <Button className='mb-3 mt-4' type='submit'>
                   Войти
                 </Button>
                 <Form.Text>
-                  <span class="mr-2">У вас нет аккаунта?</span>
-                  <a href="#" class="text-danger">
+                  <span class='mr-2'>У вас нет аккаунта?</span>
+                  <a href='/' class='text-danger'>
                     Регистрация
                   </a>
                 </Form.Text>
@@ -99,7 +99,7 @@ const Hero = () => {
         <HeroContent>
           <HeroItems>
             <HeroH1>
-              <span className="d-block">Настоящий итальянский gelato</span> и
+              <span className='d-block'>Настоящий итальянский gelato</span> и
               бельгийские вафли
             </HeroH1>
             <HeroBtn>Заказать</HeroBtn>
@@ -107,7 +107,7 @@ const Hero = () => {
         </HeroContent>
       </HeroContainer>
     </>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
