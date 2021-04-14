@@ -47,8 +47,10 @@ const Navibar = () => {
               <NavIcon onClick={handleShow}>
                 <User />
               </NavIcon>
-              <NavIcon to='/'>
-                <Cart />
+              <NavIcon>
+                <Link to='/cart'>
+                  <Cart />
+                </Link>
               </NavIcon>
             </Navbar.Collapse>
           </Container>

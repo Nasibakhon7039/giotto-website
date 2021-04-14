@@ -7,18 +7,31 @@ import About from './Pages/About'
 import News from './Pages/News'
 import Contacts from './Pages/Contacts'
 import Menu from './Pages/Menu'
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistor, store } from './redux/store'
+import { Provider } from 'react-redux'
+import Cart from './Pages/Cart'
+import { ThemeProvider } from 'styled-components'
+import { theme } from './theme'
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/menu' component={Menu} />
-        <Route exact path='/about' component={About} />
-        <Route exact path='/news' component={News} />
-        <Route exact path='/contacts' component={Contacts} />
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <PersistGate persistor={persistor} loading={null}>
+          <Router>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/menu' component={Menu} />
+              <Route exact path='/about' component={About} />
+              <Route exact path='/news' component={News} />
+              <Route exact path='/contacts' component={Contacts} />
+              <Route exact path='/cart' component={Cart} />
+            </Switch>
+          </Router>
+        </PersistGate>
+      </ThemeProvider>
+    </Provider>
   )
 }
 

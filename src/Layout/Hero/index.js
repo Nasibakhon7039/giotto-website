@@ -59,7 +59,9 @@ const Hero = () => {
                   <User />
                 </NavIcon>
                 <NavIcon>
-                  <Cart />
+                  <Link to='/cart'>
+                    <Cart />
+                  </Link>
                 </NavIcon>
               </Navbar.Collapse>
             </Container>

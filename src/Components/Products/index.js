@@ -7,8 +7,17 @@ import {
 } from './ProductsElements'
 import { Card, Button } from 'react-bootstrap'
 import { numberToPrice } from '../../utils/numberToPrice'
+import { useDispatch, useSelector } from 'react-redux'
+import { asyncAddToCartAction } from '../../redux/actions/cartActions/cartActions'
 
 const Products = ({ data }) => {
+  const dispatch = useDispatch()
+  const globalState = useSelector((state) => state)
+  console.log('globalstate => ', globalState)
+
+  const addToCart = (item) => {
+    dispatch(asyncAddToCartAction(item))
+  }
   return (
     <ProductsContainer>
       <ProductsHeading className='heading'>
@@ -32,7 +41,11 @@ const Products = ({ data }) => {
                     <b>
                       <p>{numberToPrice(product.price)}</p>
                     </b>
-                    <Button className='btn' size='sm'>
+                    <Button
+                      className='btn'
+                      size='sm'
+                      onClick={() => addToCart(product)}
+                    >
                       В корзину
                     </Button>
                   </Card.Text>
