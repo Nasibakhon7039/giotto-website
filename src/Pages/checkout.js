@@ -25,7 +25,6 @@ import {
   Wrapper,
   RadioTitle,
   RadioDesc,
-  RadioIcon,
   CheckoutHeader,
   CheckoutTitle,
   CheckoutLink,
@@ -95,37 +94,36 @@ export default function Checkout() {
     const data = {
       address: values.address,
       name: values.name,
-      delivery_type: values.delivery_method || 'deliver',
-      items: JSON.stringify(
-        orderItems.map((item) => {
-          return {
-            price: parseFloat(item.price.price),
-            product_id: item.id,
-            product_name: item.name,
-            quantity: item.quantity,
-          }
-        })
-      ),
+      delivery_type: values.delivery_method || 'pickup',
+      items: orderItems.map((item) => {
+        return {
+          price: parseFloat(item.price),
+          product_id: item.id,
+          product_name: item.name,
+          quantity: item.quantity,
+        }
+      }),
       comment: values.note,
       phone: values.phone,
+      total_price: totalPrice,
+      delivery_price: 0,
     }
-    console.log('submit =>', data)
 
     try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/orders`,
-        data
-      )
+      const response = await axios.post(`http://localhost:1337/orders`, data)
 
       if (response.status === 200) {
         setLoading(false)
         dispatch(clearCartAction())
-        console.log('order created')
+        setError(true)
+        setErrorType('success')
+        setErrorText('Ваша заказ принято! Ждите ответ оператора')
       }
       console.log(response)
     } catch (error) {
       setLoading(false)
       setError(true)
+      setErrorType('error')
       setErrorText('Что-то пошло не так')
       console.log(error)
     }
@@ -186,6 +184,7 @@ export default function Checkout() {
                         name='delivery_method'
                         onChange={(e) => handleChange(e)}
                         id='pickup'
+                        value='pickup'
                       />
                       <RadioBlock>
                         <Wrapper>
@@ -196,12 +195,13 @@ export default function Checkout() {
                     </Label>
                   </RadioWrapper>
                   <RadioWrapper>
-                    <Label htmlFor='deliver'>
+                    <Label htmlFor='delivery'>
                       <InputRadio
                         type='radio'
                         name='delivery_method'
                         onChange={(e) => handleChange(e)}
-                        id='deliver'
+                        id='delivery'
+                        value='delivery'
                       />
                       <RadioBlock>
                         <Wrapper>
