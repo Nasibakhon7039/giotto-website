@@ -112,7 +112,10 @@ export default function Checkout() {
     console.log('submit =>', data)
 
     try {
-      const response = await axios.post(process.env.ORDER_API_URL, data)
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/orders`,
+        data
+      )
 
       if (response.status === 200) {
         setLoading(false)
@@ -224,8 +227,8 @@ export default function Checkout() {
                 />
                 <Text>
                   Нажимая «Подтвердить заказ», вы соглашаетесь с условиями
-                  использования Giotto. С подробными условиями
-                  доставки можно ознакомиться на странице о доставке
+                  использования Giotto. С подробными условиями доставки можно
+                  ознакомиться на странице о доставке
                 </Text>
               </FormWrapper>
               <ButtonWrapper>
