@@ -5,6 +5,7 @@ import { productData } from '../Components/Products/data'
 import Layout from '../Layout/Layout'
 
 export default function Menu() {
+  console.log('menu')
   return (
     <Layout>
       <Navibar />

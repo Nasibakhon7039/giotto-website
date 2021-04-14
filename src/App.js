@@ -3,10 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'antd/dist/antd.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './Pages/Home'
-import { Menu } from 'antd'
 import About from './Pages/About'
 import News from './Pages/News'
 import Contacts from './Pages/Contacts'
+import Menu from './Pages/Menu'
 
 function App() {
   return (

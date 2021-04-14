@@ -1,14 +1,14 @@
-import React from "react";
-import { ContactPageContainer } from "./ContactElements";
-import { Row, Col } from "react-bootstrap";
-import location from "../../Images/location1.jpg";
+import React from 'react'
+import { ContactPageContainer } from './ContactElements'
+import { Row, Col } from 'react-bootstrap'
+import location from '../../Images/location1.jpg'
 
 const ContactPage = () => {
   return (
     <>
       <ContactPageContainer>
         <h1>Контакты</h1>
-        <Row className="mb-5">
+        <Row className='mb-5'>
           <Col>
             <h3>Номера</h3>
             <p>+998 71 234 96 65</p>
@@ -20,24 +20,24 @@ const ContactPage = () => {
           </Col>
           <Col>
             <h3>Социальные сети</h3>
-            <div className="social-media">
+            <div className='social-media'>
               <a
-                href="https://www.facebook.com/giotto.uz/"
-                className="icon-circle"
+                href='https://www.facebook.com/giotto.uz/'
+                className='icon-circle'
               >
-                <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                <i className='fa fa-facebook-official' ariaHidden='true'></i>
               </a>
-              <a href="https://t.me/giottoilgelato" className="icon-circle">
-                <i class="fa fa-telegram" aria-hidden="true"></i>
+              <a href='https://t.me/giottoilgelato' className='icon-circle'>
+                <i className='fa fa-telegram' ariaHidden='true'></i>
               </a>
               <a
-                href="https://www.instagram.com/giotto.uz/?hl=ru"
-                className="icon-circle"
+                href='https://www.instagram.com/giotto.uz/?hl=ru'
+                className='icon-circle'
               >
-                <i class="fa fa-instagram" aria-hidden="true"></i>
+                <i className='fa fa-instagram' ariaHidden='true'></i>
               </a>
-              <a href="/" className="icon-circle">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
+              <a href='/' className='icon-circle'>
+                <i className='fa fa-twitter' ariaHidden='true'></i>
               </a>
             </div>
           </Col>
@@ -55,12 +55,12 @@ const ContactPage = () => {
             <p>г. Ташкент, Яккасарайский район, улица Махмуда Тараби, 29</p>
           </Col>
           <Col md={8}>
-            <img src={location} width="640px" height="350px" alt='location' />
+            <img src={location} width='640px' height='350px' alt='location' />
           </Col>
         </Row>
       </ContactPageContainer>
     </>
-  );
-};
+  )
+}
 
-export default ContactPage;
+export default ContactPage
