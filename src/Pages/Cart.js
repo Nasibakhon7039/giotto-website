@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { ShopWrapper } from '../Components/Wrapper'
 import { ShopTitle } from '../Components/Title'
 import {
@@ -39,13 +39,12 @@ import {
   asyncReduceCartItemQuantityAction,
 } from '../redux/actions/cartActions/cartActions'
 import { numberToPrice } from '../utils/numberToPrice'
-import { useRouter } from 'next/router'
 import Navibar from '../Components/Navibar'
 import Layout from '../Layout/Layout'
 
 export default function Cart() {
   const dispatch = useDispatch()
-  const router = useRouter()
+  const router = useHistory()
 
   const user = useSelector((state) => state.auth.user)
 
@@ -71,14 +70,7 @@ export default function Cart() {
 
   const goCheckout = (event) => {
     event.preventDefault()
-    if (user) {
-      router.push('/checkout')
-    } else {
-      router.push({
-        pathname: '/login',
-        query: { goCheckout: true },
-      })
-    }
+    router.push('/checkout')
   }
 
   return (
@@ -159,7 +151,7 @@ export default function Cart() {
                   <span>0</span>
                 </CheckoutInfoRow>
                 <CheckoutInfoRow>
-                  <span>Скидка на товары</span>
+                  <span>Скидка</span>
                   <span>0</span>
                 </CheckoutInfoRow>
                 <CheckoutInfoRow>
@@ -176,7 +168,7 @@ export default function Cart() {
                   </CheckoutButton>
                 </Link>
               )}
-              <ShoppingButton onClick={() => router.back()}>
+              <ShoppingButton onClick={() => router.goBack()}>
                 Вернуться в меню
               </ShoppingButton>
             </CheckoutBlock>

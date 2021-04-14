@@ -13,6 +13,7 @@ import { Provider } from 'react-redux'
 import Cart from './Pages/Cart'
 import { ThemeProvider } from 'styled-components'
 import { theme } from './theme'
+import Checkout from './Pages/checkout'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route exact path='/news' component={News} />
               <Route exact path='/contacts' component={Contacts} />
               <Route exact path='/cart' component={Cart} />
+              <Route exact path='/checkout' component={Checkout} />
             </Switch>
           </Router>
         </PersistGate>
