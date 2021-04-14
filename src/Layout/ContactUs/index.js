@@ -15,7 +15,10 @@ const ContactUs = () => {
   const onSubmit = async (data) => {
     setLoading(true)
     try {
-      const response = await axios.post(`http://localhost:1337/contacts`, data)
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/contacts`,
+        data
+      )
 
       if (response.status === 200) {
         setLoading(false)

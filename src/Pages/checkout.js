@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { ShopWrapper } from '../Components/Wrapper'
 import { ShopTitle } from '../Components/Title'
 import {
@@ -58,20 +58,11 @@ export default function Checkout() {
     note: '',
   })
   const dispatch = useDispatch()
-  const router = useHistory()
   const user = useSelector((state) => state.auth.user)
   const [error, setError] = useState(false)
   const [errorText, setErrorText] = useState('')
   const [errorType, setErrorType] = useState('error')
   const [loading, setLoading] = useState(false)
-
-  //   useEffect(() => {
-  //     setValues({
-  //       ...values,
-  //       name: `${user.name} ${user.lastname}`,
-  //       phone: user.phone,
-  //     })
-  //   }, [user])
 
   const cartItems = useSelector((state) => state.cart.cartItems, shallowEqual)
   const totalPrice = useSelector(
@@ -110,7 +101,10 @@ export default function Checkout() {
     }
 
     try {
-      const response = await axios.post(`http://localhost:1337/orders`, data)
+      const response = await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/orders`,
+        data
+      )
 
       if (response.status === 200) {
         setLoading(false)
@@ -124,7 +118,7 @@ export default function Checkout() {
       setLoading(false)
       setError(true)
       setErrorType('error')
-      setErrorText('Что-то пошло не так')
+      setErrorText('Что-то пошло не так. Попробуйте позже.')
       console.log(error)
     }
   }

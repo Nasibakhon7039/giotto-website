@@ -44,9 +44,9 @@ const Navibar = () => {
                   <Link to='/contacts'>Контакты</Link>
                 </Nav.Link>
               </Nav>
-              <NavIcon onClick={handleShow}>
+              {/* <NavIcon onClick={handleShow}>
                 <User />
-              </NavIcon>
+              </NavIcon> */}
               <NavIcon>
                 <Link to='/cart'>
                   <Cart />

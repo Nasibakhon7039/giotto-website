@@ -46,8 +46,6 @@ export default function Cart() {
   const dispatch = useDispatch()
   const router = useHistory()
 
-  const user = useSelector((state) => state.auth.user)
-
   const cartItems = useSelector((state) => state.cart.cartItems, shallowEqual)
   const totalPrice = useSelector(
     (state) => cartTotalPriceSelector(state),
