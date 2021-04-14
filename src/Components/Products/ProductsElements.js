@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ProductsContainer = styled.div`
   width: 100vw;
@@ -24,12 +24,13 @@ export const ProductsContainer = styled.div`
       background-color: transparent;
     }
   }
-`;
+`
 
 export const ProductsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  width: 100%;
+  padding: 0 20px;
   margin: 0 auto;
 
   .btn {
@@ -44,7 +45,7 @@ export const ProductsWrapper = styled.div`
     -mox-box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
     -box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
   }
-`;
+`
 
 export const ProductsHeading = styled.div`
   h1 {
@@ -52,4 +53,4 @@ export const ProductsHeading = styled.div`
     text-align: center;
     margin-bottom: 3rem;
   }
-`;
+`

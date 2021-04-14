@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const MenuContainer = styled.div`
+  min-height: 50vh;
   margin: 80px 50px;
 
   h1 {
@@ -33,7 +34,7 @@ export const MenuContainer = styled.div`
   .nav-item {
     margin: 0 15px 0 15px;
   }
-`;
+`
 
 export const ProductsWrapper = styled.div`
   display: flex;
@@ -51,4 +52,4 @@ export const ProductsWrapper = styled.div`
     -mox-box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
     -box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.2);
   }
-`;
+`

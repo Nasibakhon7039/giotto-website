@@ -17,10 +17,10 @@ const Menus = ({ categories }) => {
     setErrorText(item.name)
   }
   return (
-    categories.length > 0 && (
-      <>
-        <MenuContainer>
-          <h1>Меню</h1>
+    <>
+      <MenuContainer>
+        <h1>Меню</h1>
+        {categories.length > 0 && (
           <Tab.Container
             id='left-tabs-example'
             defaultActiveKey={categories[0].id}
@@ -82,15 +82,15 @@ const Menus = ({ categories }) => {
               </Col>
             </Row>
           </Tab.Container>
-        </MenuContainer>
-        <Alert
-          open={alert}
-          type='success'
-          onClose={() => setAlert(false)}
-          errorText={`Добавлено: ${errorText}`}
-        />
-      </>
-    )
+        )}
+      </MenuContainer>
+      <Alert
+        open={alert}
+        type='success'
+        onClose={() => setAlert(false)}
+        errorText={`Добавлено: ${errorText}`}
+      />
+    </>
   )
 }
 

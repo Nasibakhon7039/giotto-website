@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Navbar, Container, Nav, Form, Modal, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import logo from '../../Images/logo.png'
 import {
   HeroContainer,
@@ -16,6 +16,7 @@ import {
 
 const Hero = () => {
   const [show, setShow] = useState(false)
+  const history = useHistory()
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -104,7 +105,7 @@ const Hero = () => {
               <span className='d-block'>Настоящий итальянский gelato</span> и
               бельгийские вафли
             </HeroH1>
-            <HeroBtn>Заказать</HeroBtn>
+            <HeroBtn onClick={() => history.push('/menu')}>Заказать</HeroBtn>
           </HeroItems>
         </HeroContent>
       </HeroContainer>
