@@ -88,7 +88,7 @@ export default function Checkout() {
       delivery_type: values.delivery_method || 'pickup',
       items: orderItems.map((item) => {
         return {
-          price: parseFloat(item.price),
+          price: numberToPrice(item.price),
           product_id: item.id,
           product_name: item.name,
           quantity: item.quantity,
@@ -96,7 +96,7 @@ export default function Checkout() {
       }),
       comment: values.note,
       phone: values.phone,
-      total_price: totalPrice,
+      total_price: numberToPrice(totalPrice),
       delivery_price: 0,
     }
 

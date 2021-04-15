@@ -28,56 +28,64 @@ const Menus = ({ categories }) => {
             <Row>
               <Col sm={3}>
                 <Nav variant='pills' className='flex-column'>
-                  {categories.map((category) => (
-                    <Nav.Item key={category.id} className='my-2'>
-                      <Nav.Link eventKey={category.id}>
-                        {category.name}
-                      </Nav.Link>
-                    </Nav.Item>
-                  ))}
+                  {categories
+                    .sort((a, b) => a.order - b.order)
+                    .map((category) => (
+                      <Nav.Item key={category.id} className='my-2'>
+                        <Nav.Link eventKey={category.id}>
+                          {category.name}
+                        </Nav.Link>
+                      </Nav.Item>
+                    ))}
                 </Nav>
               </Col>
               <Col sm={9}>
                 <Tab.Content>
-                  {categories.map((item) => (
-                    <Tab.Pane eventKey={item.id} key={item.id}>
-                      <ProductsWrapper>
-                        {item.products.length > 0 &&
-                          item.products.map((product) => (
-                            <CardDeck key={product.id}>
-                              <Card
-                                style={{ width: '16rem' }}
-                                className='mr-5 mb-4 card-shadow'
-                              >
-                                <Card.Img
-                                  variant='top'
-                                  src={product.image.url}
-                                  alt={product.name}
-                                />
-                                <Card.Body>
-                                  <Card.Title class='h6'>
-                                    {product.name}
-                                  </Card.Title>
-                                  <Card.Text>{product.description}</Card.Text>
-                                  <Card.Text className='mt-5 footer-card'>
-                                    <b>
-                                      <p>{numberToPrice(product.price)}</p>
-                                    </b>
-                                    <Button
-                                      className='btn'
-                                      size='sm'
-                                      onClick={() => addToCart(product)}
-                                    >
-                                      В корзину
-                                    </Button>
-                                  </Card.Text>
-                                </Card.Body>
-                              </Card>
-                            </CardDeck>
-                          ))}
-                      </ProductsWrapper>
-                    </Tab.Pane>
-                  ))}
+                  {categories
+                    .sort((a, b) => a.order - b.order)
+                    .map((item) => (
+                      <Tab.Pane eventKey={item.id} key={item.id}>
+                        <ProductsWrapper>
+                          {item.products.length > 0 &&
+                            item.products
+                              .sort((a, b) => a.order - b.order)
+                              .map((product) => (
+                                <CardDeck key={product.id}>
+                                  <Card
+                                    style={{ width: '16rem' }}
+                                    className='mr-5 mb-4 card-shadow'
+                                  >
+                                    <Card.Img
+                                      variant='top'
+                                      src={product.image.url}
+                                      alt={product.name}
+                                    />
+                                    <Card.Body>
+                                      <Card.Title class='h6'>
+                                        {product.name}
+                                      </Card.Title>
+                                      <Card.Text>
+                                        {product.description}
+                                      </Card.Text>
+                                      <Card.Text className='mt-5 footer-card'>
+                                        <b>
+                                          <p>{numberToPrice(product.price)}</p>
+                                        </b>
+                                        <Button
+                                          className='btn'
+                                          size='sm'
+                                          onClick={() => addToCart(product)}
+                                        >
+                                          В корзину
+                                        </Button>
+                                      </Card.Text>
+                                    </Card.Body>
+                                  </Card>
+                                </CardDeck>
+                              ))}
+                        </ProductsWrapper>
+                      </Tab.Pane>
+                    ))}
                 </Tab.Content>
               </Col>
             </Row>

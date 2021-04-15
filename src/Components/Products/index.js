@@ -31,35 +31,37 @@ const Products = ({ data }) => {
         </ProductsHeading>
         <span onClick={() => history.push('/menu')}>Ещё &rarr;</span>
         <ProductsWrapper>
-          {data.map((product, index) => {
-            return (
-              <CardDeck key={index}>
-                <Card className='m-4 card-shadow'>
-                  <Card.Img
-                    variant='top'
-                    src={product.image?.url}
-                    alt={product.name}
-                  />
-                  <Card.Body>
-                    <Card.Title class='h6'>{product.name}</Card.Title>
-                    <Card.Text>{product.description}</Card.Text>
-                    <Card.Text className='mt-3 footer-card'>
-                      <b>
-                        <p>{numberToPrice(product.price)}</p>
-                      </b>
-                      <Button
-                        className='btn'
-                        size='sm'
-                        onClick={() => addToCart(product)}
-                      >
-                        В корзину
-                      </Button>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </CardDeck>
-            )
-          })}
+          {data
+            .sort((a, b) => a.order - b.order)
+            .map((product, index) => {
+              return (
+                <CardDeck key={index}>
+                  <Card className='m-4 card-shadow'>
+                    <Card.Img
+                      variant='top'
+                      src={product.image?.url}
+                      alt={product.name}
+                    />
+                    <Card.Body>
+                      <Card.Title class='h6'>{product.name}</Card.Title>
+                      <Card.Text>{product.description}</Card.Text>
+                      <Card.Text className='mt-3 footer-card'>
+                        <b>
+                          <p>{numberToPrice(product.price)}</p>
+                        </b>
+                        <Button
+                          className='btn'
+                          size='sm'
+                          onClick={() => addToCart(product)}
+                        >
+                          В корзину
+                        </Button>
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </CardDeck>
+              )
+            })}
         </ProductsWrapper>
       </ProductsContainer>
       <Alert
