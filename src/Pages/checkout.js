@@ -88,7 +88,7 @@ export default function Checkout() {
       delivery_type: values.delivery_method || 'pickup',
       items: orderItems.map((item) => {
         return {
-          price: numberToPrice(item.price),
+          price: item.price.toString(),
           product_id: item.id,
           product_name: item.name,
           quantity: item.quantity,
@@ -96,7 +96,7 @@ export default function Checkout() {
       }),
       comment: values.note,
       phone: values.phone,
-      total_price: numberToPrice(totalPrice),
+      total_price: totalPrice.toString(),
       delivery_price: 0,
     }
 
