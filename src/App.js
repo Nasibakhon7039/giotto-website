@@ -14,6 +14,7 @@ import Cart from './Pages/Cart'
 import { ThemeProvider } from 'styled-components'
 import { theme } from './theme'
 import Checkout from './Pages/checkout'
+import Profile from './Pages/Profile'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               <Route exact path='/contacts' component={Contacts} />
               <Route exact path='/cart' component={Cart} />
               <Route exact path='/checkout' component={Checkout} />
+              <Route exact path='/profile' component={Profile} />
             </Switch>
           </Router>
         </PersistGate>

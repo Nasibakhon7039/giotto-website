@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Navbar, Container, Nav, Form, Modal, Button } from 'react-bootstrap'
+import { Navbar, Container, Nav } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
+import AuthModal from '../../Components/AuthModal/AuthModal'
 import logo from '../../Images/logo.png'
 import {
   HeroContainer,
@@ -13,14 +14,21 @@ import {
   HeroBtn,
   HeroH1,
 } from './HeroElements'
+import { useSelector } from 'react-redux'
 
 const Hero = () => {
   const [show, setShow] = useState(false)
   const history = useHistory()
+  const user = useSelector((state) => state.auth.user)
 
   const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
-  const handleChange = () => true
+  const handleShow = () => {
+    if (!user) {
+      setShow(true)
+    } else {
+      history.push('/profile')
+    }
+  }
 
   return (
     <>
@@ -56,9 +64,9 @@ const Hero = () => {
                     <Link to='/contacts'>Контакты</Link>
                   </Nav.Link>
                 </Nav>
-                {/* <NavIcon onClick={handleShow}>
+                <NavIcon onClick={handleShow}>
                   <User />
-                </NavIcon> */}
+                </NavIcon>
                 <NavIcon>
                   <Link to='/cart'>
                     <Cart />
@@ -68,37 +76,7 @@ const Hero = () => {
             </Container>
           </Navbar>
         </Styles>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Добро пожаловать</Modal.Title>
-          </Modal.Header>
-          <Modal.Body className='mr-5 ml-5'>
-            <Form style={{ textAlign: 'center' }}>
-              <Form.Group controlId='formBasicEmail'>
-                <Form.Label for='phone' className='m-4'>
-                  Войдите с вашим номером телефона
-                </Form.Label>
-                <Form.Control
-                  type='tel'
-                  id='phone'
-                  name='phone'
-                  required
-                  value='+998'
-                  onChange={handleChange}
-                />
-                <Button className='mb-3 mt-4' type='submit'>
-                  Войти
-                </Button>
-                <Form.Text>
-                  <span class='mr-2'>У вас нет аккаунта?</span>
-                  <a href='/' class='text-danger'>
-                    Регистрация
-                  </a>
-                </Form.Text>
-              </Form.Group>
-            </Form>
-          </Modal.Body>
-        </Modal>
+        <AuthModal show={show} handleClose={handleClose} />
         <HeroContent>
           <HeroItems>
             <HeroH1>

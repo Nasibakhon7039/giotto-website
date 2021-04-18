@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ShopWrapper } from '../Components/Wrapper'
 import { ShopTitle } from '../Components/Title'
@@ -78,6 +78,16 @@ export default function Checkout() {
     setValues({ ...values, [event.target.name]: event.target.value })
   }
 
+  useEffect(() => {
+    if (user) {
+      setValues({
+        ...values,
+        name: `${user.first_name} ${user.last_name}`,
+        phone: user.phone,
+      })
+    }
+  }, [user])
+
   const onSubmit = async (event) => {
     event.preventDefault()
     setLoading(true)
@@ -136,7 +146,7 @@ export default function Checkout() {
                 <InputWrapper>
                   <Input
                     name='name'
-                    defaultValue={user && `${user.name} ${user.lastname}`}
+                    value={values.name}
                     onChange={(e) => handleChange(e)}
                     label='Фамилия и Имя'
                     variant='outlined'
@@ -147,7 +157,6 @@ export default function Checkout() {
                 <InputWrapper>
                   <Input
                     name='address'
-                    defaultValue={user && user.address}
                     onChange={(e) => handleChange(e)}
                     label='Адрес'
                     variant='outlined'
@@ -158,7 +167,7 @@ export default function Checkout() {
                 <InputWrapper>
                   <Input
                     name='phone'
-                    defaultValue={user && user.phone}
+                    value={values.phone}
                     onChange={(e) => handleChange(e)}
                     label='Телефон'
                     variant='outlined'
