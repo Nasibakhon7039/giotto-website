@@ -6,15 +6,13 @@ import { getUnmaskedPhoneNumber } from '../../utils/getUnmaskedPhoneNumber'
 import axios from 'axios'
 import Alert from '../Alert'
 import { CircularProgress } from '@material-ui/core'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setUser } from '../../redux/actions/authActions/authActions'
 import { useHistory } from 'react-router-dom'
 
 export default function AuthModal({ show, handleClose }) {
   const { register, handleSubmit, control, reset } = useForm()
   const dispatch = useDispatch()
-  const state = useSelector((state) => state)
-  console.log('state => ', state)
   const history = useHistory()
 
   const [error, setError] = useState(false)

@@ -3,7 +3,6 @@ import { CabinetButton } from './item'
 import { Grid } from '@material-ui/core'
 import axios from 'axios'
 import { setUser } from '../../redux/actions/authActions/authActions'
-import mapDispatchToProps from 'react-redux/lib/connect/mapDispatchToProps'
 import { Input } from '../Input'
 import Alert from '../Alert'
 import { connect } from 'react-redux'
@@ -59,7 +58,7 @@ class Cabinet extends Component {
 
   render() {
     const { password, name, surname, phone, confirm_password } = this.state
-    const { user } = this.props
+    const { user, setUser } = this.props
 
     const handleChange = (props) => (event) => {
       let val = event.target.value
@@ -74,6 +73,20 @@ class Cabinet extends Component {
           errorText: 'Пароль не совпадает',
         })
         return
+      } else if (password.length === 0) {
+        this.setState({
+          error: true,
+          errorType: 'error',
+          errorText: 'Введите новый пароль',
+        })
+        return
+      } else if (password.length < 6) {
+        this.setState({
+          error: true,
+          errorType: 'error',
+          errorText: 'Пароль должен содержать минимум 6 символов',
+        })
+        return
       }
 
       if (phone.length !== 13) {
@@ -86,20 +99,12 @@ class Cabinet extends Component {
       }
 
       axios
-        .put(
-          `${process.env.REACT_APP_BASE_URL}/clients/${user.id}`,
-          {
-            first_name: name,
-            last_name: surname,
-            phone,
-            password,
-          },
-          {
-            headers: {
-              token: user.token,
-            },
-          }
-        )
+        .put(`${process.env.REACT_APP_BASE_URL}/clients/${user.id}`, {
+          first_name: name,
+          last_name: surname,
+          phone,
+          password,
+        })
         .then((res) => {
           if (res.status === 200)
             this.setState({
@@ -107,9 +112,14 @@ class Cabinet extends Component {
               errorType: 'success',
               errorText: 'Изменено успешно',
             })
-          mapDispatchToProps(setUser(res.data))
+          setUser(res.data)
         })
         .catch((err) => {
+          this.setState({
+            error: true,
+            errorType: 'success',
+            errorText: 'Что то произошло не так',
+          })
           console.log(err)
         })
     }
@@ -216,5 +226,12 @@ function mapStateToProps(state) {
   const { auth } = state
   return { user: auth.user }
 }
+function mapDispatchToProps(dispatch) {
+  return {
+    setUser: (data) => {
+      dispatch(setUser(data))
+    },
+  }
+}
 
-export default connect(mapStateToProps)(Cabinet)
+export default connect(mapStateToProps, mapDispatchToProps)(Cabinet)
