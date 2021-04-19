@@ -8,6 +8,7 @@ import {
   // CartPlus,
   // Payment,
 } from './FeatureElements'
+import stepImg from '../../images/howitworks.png'
 import { useHistory } from 'react-router-dom'
 
 const Feature = () => {
@@ -24,16 +25,7 @@ const Feature = () => {
       <Step>
         <h1>Теперь заказывать очень легко!</h1>
         <div className='step-div'>
-          {/* <IceCream />
-          <h6>Выбери любимый вкус</h6>
-        </div>
-        <div className="step-div">
-          <CartPlus />
-          <h6>Выбери любимый вкус</h6>
-        </div>
-        <div className="step-div">
-          <Payment />
-          <h6>Выбери любимый вкус</h6> */}
+          <img src={stepImg} />
         </div>
       </Step>
     </FeatureContainer>
