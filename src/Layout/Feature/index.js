@@ -8,7 +8,7 @@ import {
   // CartPlus,
   // Payment,
 } from './FeatureElements'
-import stepImg from '../../images/howitworks.png'
+import stepImg from '../../Images/howitworks.png'
 import { useHistory } from 'react-router-dom'
 
 const Feature = () => {
