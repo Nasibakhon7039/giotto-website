@@ -59,24 +59,11 @@ export const Step = styled.div`
   .step-div {
     display: inline-block;
     margin: 90px 110px 0 110px;
+
+  img{
+  height: 100vh;
+  max-height: 500px;
+  background-position: center;
+  background-size: cover;
+}
   }
-
-  p {
-    display: inline-block;
-  }
-`;
-
-export const IceCream = styled(FaIceCream)`
-  font-size: 50px;
-  margin-bottom: 20px;
-`;
-
-export const CartPlus = styled(FaCartPlus)`
-  font-size: 50px;
-  margin-bottom: 20px;
-`;
-
-export const Payment = styled(MdPayment)`
-  font-size: 50px;
-  margin-bottom: 20px;
-`;
